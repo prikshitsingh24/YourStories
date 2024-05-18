@@ -14,7 +14,7 @@ YourStories is an interactive storytelling web app for children, offering a capt
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/YourStories.git
+    git clone https://github.com/<username>/YourStories.git
     cd YourStories
     ```
 
