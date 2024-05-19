@@ -1,15 +1,22 @@
 import './App.css'
+import LoginCard from './login/login'
 
 function App() {
  
 
   return (
-    <div>
-      YourStories
-      <h1>
-        hello
-      </h1>
+    <div className="wrapper">
+      <form>
+        <h1>
+           YourStories
+        </h1>
+        <LoginCard>
+        </LoginCard>
+      </form>
+
       
+
+       
       </div>
 
   )

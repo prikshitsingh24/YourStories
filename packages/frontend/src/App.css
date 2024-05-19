@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.wrapper h1{
+  font-size: 150px;
+  margin-bottom: 30px;
+  text-align: center;
+}
