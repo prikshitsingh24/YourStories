@@ -3,7 +3,9 @@ import "./login.css"
 function LoginCard()
 {
     return (
-        <div className="logincard">
+        <div>
+            <div className="title">YourStories</div>
+            <div className="logincard">
             <div className="name-pass">
                 Username
             </div>
@@ -27,6 +29,8 @@ function LoginCard()
                 <a href="#">Signup</a></p>
             </div>
         </div>
+        </div>
+        
     );
 }
 

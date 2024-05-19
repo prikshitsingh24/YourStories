@@ -1,0 +1,16 @@
+.wrapper h1{
+    font-size: 150px;
+    margin-bottom: 30px;
+    text-align: center;
+    animation: fadeIn 4s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
