@@ -1,10 +1,14 @@
 import express, { Request, Response } from 'express';
-
+import bodyParser from 'body-parser';
+import login from './routes/user/login';
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(bodyParser.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Backend');
+app.use('/user', login);
+
+app.get('/', (req:any, res:any) => {
+  res.send('This is YourStories Backend');
 });
 
 app.listen(port, () => {
