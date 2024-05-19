@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './home/home'
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginCard from './login/login'
 function App() {
  

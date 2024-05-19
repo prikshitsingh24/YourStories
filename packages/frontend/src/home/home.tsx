@@ -1,5 +1,5 @@
 import './home.css'
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom'
+import { BrowserRouter as  Link } from 'react-router-dom'
 
 
 function Home() {
