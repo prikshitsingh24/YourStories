@@ -26,7 +26,7 @@ function LoginCard()
             
             <div className="Signup">
                 <p>Don't have an account?
-                <a href="#">Signup</a></p>
+                <a href="/signUp">Signup</a></p>
             </div>
         </div>
         </div>
