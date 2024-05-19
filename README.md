@@ -32,7 +32,7 @@ YourStories is an interactive storytelling web app for children, offering a capt
 
     Frontend: Open your browser and navigate to `http://localhost:3000`
 
-    Backend: Open your browser and navigate to `http://localhost:5000`
+    Backend: Open your browser and navigate to `http://localhost:5173`
 
 ## Technologies Used
 
