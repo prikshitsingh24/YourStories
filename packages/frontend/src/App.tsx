@@ -1,23 +1,16 @@
 import './App.css'
+import Home from './home/home'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginCard from './login/login'
-
 function App() {
  
-
   return (
-    <div className="wrapper">
-      <form>
-        <h1>
-           YourStories
-        </h1>
-        <LoginCard>
-        </LoginCard>
-      </form>
-
-      
-
-       
-      </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginCard />} />
+    </Routes>
+  </Router>
 
   )
 }
