@@ -2,6 +2,8 @@
 
 YourStories is an interactive storytelling web app for children, offering a captivating experience powered by Gemini Multimodal AI. Children can embark on unique adventures, making choices that shape the story's outcome, all while enjoying dynamic text, images, and audio.
 
+![msedge_chUe5VN8Ik](https://github.com/PrikshitSingh24/YourStories/assets/99068054/c685435c-c2e4-45e1-9aac-b55e228327b6)
+
 ## Features
 
 - **Interactive Storytelling**: Children can choose their own adventure and see the story unfold based on their choices.
