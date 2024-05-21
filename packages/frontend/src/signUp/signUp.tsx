@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function SignUp(){
     return(
         <div>
-        <div className="title">Welcome to YourStories</div>
+        <div className="titleSignUp">Welcome to YourStories</div>
         <div className="logincard">
         <div className="name-pass">
             Username

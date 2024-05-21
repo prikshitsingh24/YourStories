@@ -1,10 +1,10 @@
 import "./login.css"
-
+import { Link } from 'react-router-dom';
 function LoginCard()
 {
     return (
         <div>
-            <div className="title">YourStories</div>
+            <div className="titleLogin">YourStories</div>
             <div className="logincard">
             <div className="name-pass">
                 Username
@@ -22,7 +22,9 @@ function LoginCard()
                 <input  type="password" placeholder="Enter your password" required></input>
             </div>
 
+            <Link to="/preference">
             <button className="btn">Sign in</button>
+            </Link>
             
             <div className="Signup">
                 <p>Don't have an account?

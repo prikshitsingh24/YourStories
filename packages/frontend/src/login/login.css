@@ -1,4 +1,4 @@
-.title{
+.titleLogin{
     font-size: 70px;
     padding-bottom: 20px;
 }
@@ -9,7 +9,6 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-
 
 
 .name-pass{
