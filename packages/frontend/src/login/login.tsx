@@ -30,9 +30,7 @@ function LoginCard()
             </div>
             
 
-            <Link to="/preference">
             <button className="btn">Sign in</button>
-            </Link>
             
             <div className="Signup">
                 <p>Don't have an account?
