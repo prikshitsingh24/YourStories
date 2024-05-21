@@ -1,3 +1,10 @@
+
+.titleLogin{
+    font-size: 70px;
+    padding-bottom: 20px;
+}
+  
+
 *{
     margin: 0;
     padding: 0;
@@ -12,6 +19,8 @@ html {
     align-items: center;
   }
 
+
+
 .mainLogin{
     display: flex;
     justify-content: center;
@@ -23,6 +32,7 @@ html {
 .logincard{ 
     align-items: center;  
 }
+
 
 .name-pass{
     font-size: 14px;
