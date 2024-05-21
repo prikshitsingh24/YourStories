@@ -1,11 +1,26 @@
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import login from './routes/user/login';
-const app = express();
-const port = process.env.PORT || 3000;
-app.use(bodyParser.json());
+import router from './routes/user';
+import connectmongoDb from './mongo';
+import cookieParser from 'cookie-parser'; 
+import cors from 'cors';
+import auth from './middleware/auth';
 
-app.use('/user', login);
+
+
+
+
+const app = express();
+
+const port = process.env.PORT || 8000;
+app.use(cors());
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+// connection mongo db
+connectmongoDb()
+
+app.use('/api/user',router);
 
 app.get('/', (req:any, res:any) => {
   res.send('This is YourStories Backend');
