@@ -1,0 +1,58 @@
+.titleSignUp{
+    font-size: 70px;
+    padding-bottom: 20px;
+}
+  
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.name-pass{
+    font-size: 14px;
+    font: bold;
+    text-align: left;
+    padding-left: 60px;
+}
+
+.input-box{
+    width: 500px;
+    height: 30px;
+    margin-bottom: 3%;
+}
+
+.input-box input{
+    
+    width: 75%;
+    height: 100%;
+    text-align: left;
+    margin-bottom: 3%;
+    border: none;
+    outline: none;
+    border: 2px solid ;
+    
+    border-radius: 5px;
+    padding-left: 3%;
+}
+
+.input-box input::placeholder{
+    color: white;
+}
+
+.btn{
+
+    height:30px;
+    width: 100px;
+    font-size: 12px;
+    margin-top: 5%;
+    margin-inline: 10%;
+    padding-inline: 20px;
+    margin-bottom: 10px;
+}
+
+.signup{
+    font-size: 12px;
+}
+
