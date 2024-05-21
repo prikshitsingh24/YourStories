@@ -3,17 +3,22 @@ import "./login.css"
 function LoginCard()
 {
     return (
-        <div>
+        <div className="mainLogin">
             <div className="title">YourStories</div>
             <div className="logincard">
-            <div className="name-pass">
+
+            <div className="usernameBox">
+            <div className="name-user">
                 Username
             </div>
 
             <div className="input-box">
                 <input type="text" placeholder="Enter your username" required></input>
             </div>
+            </div>
+            
 
+            <div className="passwordBox">
             <div className="name-pass">
                 Password
             </div>
@@ -21,6 +26,8 @@ function LoginCard()
             <div className="input-box">
                 <input  type="password" placeholder="Enter your password" required></input>
             </div>
+            </div>
+            
 
             <button className="btn">Sign in</button>
             

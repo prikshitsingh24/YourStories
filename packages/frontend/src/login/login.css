@@ -5,27 +5,39 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: white;
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-
-
-.logincard{
-    
+.mainLogin{
+    display: flex;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
     
+}
 
+.logincard{ 
+    align-items: center;  
 }
 
 .name-pass{
     font-size: 14px;
     text-align: left;
     font: bold;
-    margin-left: 215px;
+    margin-left: 21px;
 }
+
+.name-user{
+    font-size: 14px;
+    text-align: left;
+    font: bold;
+    margin-left: 76px;
+}
+
 
 .input-box{
     width: 100%;
@@ -67,3 +79,14 @@ body {
     font-size: 12px;
 }
 
+.usernameBox{
+    margin-right: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.passwordBox{
+    margin-right: 25px;
+    display: flex;
+    flex-direction: row;
+}
