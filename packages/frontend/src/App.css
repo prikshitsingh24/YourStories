@@ -1,8 +1,21 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
 
+
+
+
+.wrapper{
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper h1{
+  font-size: 150px;
+  margin-bottom: 30px;
+  text-align: center;
+}
