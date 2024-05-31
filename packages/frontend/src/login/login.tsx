@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./login.css"
 function LoginCard()
 {
@@ -28,8 +29,10 @@ function LoginCard()
             </div>
             </div>
             
-
+            <Link to="/stories">
             <button className="btn">Sign in</button>
+            </Link>
+            
             
             <div className="Signup">
                 <p>Don't have an account?

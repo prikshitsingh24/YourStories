@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Prevents scrollbars on smaller screens */
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  position: fixed;
+  top: 10px;
+  left: 0px; /* Adjusted for better alignment */
+  padding: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: black; /* Keep the original color */
+  margin-bottom: 5px;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: rgb(212, 198, 1);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transition: width 0.3s ease-in-out;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar.expanded {
+  width: 410px; /* Adjusted for practical usability */
+}
+
+/* Sidebar icons */
+.sidebar-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.icon_setting {
+  position: fixed;
+  top: 50px;
+  left: 10px; /* Adjusted for better alignment */
+  padding: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.icon_taskbar {
+  margin: 20px 0;
+  color: black;
+}
+
+.icon_taskbar a {
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* Sidebar content */
+.sidebar-content {
+  margin-top: 50px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.sidebar-content a {
+  color: black;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+/* Stories section */
+.stories {
+  margin-left: 120px; /* Matches the collapsed sidebar width */
+  transition: margin-left 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: calc(100vw - 60px); /* Adjusts width to account for sidebar */
+}
+
+
+/* Centering content within bookBody */
+.bookBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+
