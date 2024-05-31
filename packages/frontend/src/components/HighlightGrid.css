@@ -1,0 +1,58 @@
+ .highlight-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 480px;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: #323252; /* Dark background to match the book cover */
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #444;
+  }
+  
+  .highlight-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+  }
+  
+  .highlight-cell {
+    position: relative;
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: #FFC107; /* Yellow color */
+    border-radius: 20px; /* Fully rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .highlight-cell:hover {
+    background-color: #FFB300; /* Darker yellow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .highlight-select {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    outline: none;
+    appearance: none; /* Remove default dropdown arrow */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .highlight-select option {
+    background-color: white;
+    color: black;
+  }
+  

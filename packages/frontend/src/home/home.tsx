@@ -7,8 +7,9 @@ function Home() {
       
         <section className="landing-page">
           <div className="section-content">
-            <h1>YourStories</h1>
-            <p>Welcome to YourStories, where your imagination meets technology!</p>
+            <h1 className='mainHeadHome'>YourStories</h1>
+            <div className='homeText'>Welcome to YourStories, where your imagination meets technology!</div>
+            
             <Link to="/login">
               <button>Try it!</button>
             </Link>

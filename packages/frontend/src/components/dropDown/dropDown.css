@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+
+.dropDownMain{
+    display:flex;
+    flex-direction: row;
+
+}
+.highlight-select {
+    position: relative;
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    color:rgb(212, 198, 1);
+    font-family: "Island Moments",cursive;
+    font-weight:bolder;
+    font-size:30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for depth */
+    mix-blend-mode:multiply; /* Blend the text with the background */
+    font-style:italic;
+
+    background-color:transparent; /* Yellow color */
+    border-radius: 20px; /* Fully rounded corners */
+    padding-left:5px;
+    border: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.highlight-select:hover {
+    background-color: black; /* Darker yellow on hover */
+    box-shadow: 0 6px 12px rgba(214, 211, 211, 0.3);
+  }
+  .propOptiontitle{
+    color: rgb(212, 198, 1);
+    font-family: "Island Moments", cursive;
+    font-weight: bolder;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for depth */
+    mix-blend-mode: multiply; /* Blend the text with the background */
+    font-style: italic;
+    background-color: transparent; 
+  }

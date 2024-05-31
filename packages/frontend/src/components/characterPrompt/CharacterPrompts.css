@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.character-prompts-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.prompt-box {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.prompt-header {
+  font-family: 'Island Moments', cursive;
+  font-weight: bold;
+  color: rgb(212, 198, 1);
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
+}
+
+.input-field {
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.42);
+  font-family: 'Island Moments', cursive;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(212, 198, 1);
+  background: none;
+  outline: none;
+  padding: 5px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 204, 0, 0.761); /* Slightly darker than title color */
+}
+
+.input-field:focus {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+.submit-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-family: 'Island Moments', cursive;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(212, 198, 1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.submit-button:hover {
+  background-color: black;
+  color: rgb(212, 198, 1);
+  box-shadow: 0 6px 12px rgba(214, 211, 211, 0.3);
+}
