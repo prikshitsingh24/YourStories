@@ -45,11 +45,9 @@ const Sidebar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 const Stories: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-
-
-
   return (
-    <div className="stories">
+    <div className="yourstoriesBody">
+       <div className="stories">
       <Hamburger onClick={() => setIsOpen(!isOpen)} />
 
       <Sidebar isOpen={isOpen} />
@@ -57,6 +55,8 @@ const Stories: React.FC = () => {
         <MyBook/>
       </div>
     </div>
+    </div>
+   
   );
 };
 
