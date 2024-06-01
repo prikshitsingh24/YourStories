@@ -1,5 +1,5 @@
 import express, { Router,Request, Response } from 'express';
-import storyTeller from '../controllers/storyteller'
+import storyTeller from '../controllers/storyTeller'
 
 const router = Router();
 
