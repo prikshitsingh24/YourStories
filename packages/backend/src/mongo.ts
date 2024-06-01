@@ -1,9 +1,16 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+import path from 'path';
 
+dotenv.config({ path: path.resolve(__dirname, '../../../../../secrets.env') });
 // connect to db mongo
 async function connectmongoDb() {
-    return mongoose
-    .connect("mongodb://127.0.0.1:27017/YourStories");
+    if(!process.env.MONGO_DB_URL){
+        return 0;
+    }else{
+        return mongoose
+    .connect(process.env.MONGO_DB_URL);
+    }
     
 }
 export default connectmongoDb;
