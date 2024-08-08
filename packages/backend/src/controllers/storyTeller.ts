@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: path.resolve(__dirname, '../../../../secrets.env') });
 
 async function start(req:Request,res:Response) {
-    const { genre,age,setting,characters,theme,tone,length } = req.body;
+    const { topic,genre,age,setting,characters,length } = req.body;
     if (!genre) {
         return res.status(404).send("please provide the content, genre");
     }
@@ -19,14 +19,14 @@ async function start(req:Request,res:Response) {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
         const msg = `Give me a story whose description is and ask question to user and the options  :
                     genre: ${genre},
+                    topic: ${topic},
                     ageGroup: ${age},
                     setting: ${setting},
-                    all the characters: ${characters[0]},${characters[1]},${characters[2]},
-                    theme: ${theme},
-                    tone: ${tone},
+                    all the characters: ${characters}},
                     length: ${length}
                     give me in json format example: 
                     {
+                        "title":"title of the story",
                         "story": "Prikshit, Raunit, and Priyanshu, three close friends, embarked on their journey to become Pokemon Masters. They had grown up together, sharing dreams of catching powerful Pokemon and battling their way to the top. One sunny afternoon, while exploring the Viridian Forest, they stumbled upon a wounded Pikachu. The little Pokemon was weak and scared, its tail flickering faintly. Prikshit, an aspiring Pokemon Doctor, immediately took charge. He carefully examined Pikachu, realizing it needed immediate medical attention. However, the only known cure was a rare berry found on the perilous Thunder Mountain, a day's journey away.",
                           "question": "What will the friends do?",
                           "options": {
@@ -75,8 +75,8 @@ async function start(req:Request,res:Response) {
 
 
 async function yourStory(req:Request,res:Response) {
-  const { story,question,userChoice } = req.body;
-  if (!story && !userChoice) {
+  const { story,question,option } = req.body;
+  if (!story && !option) {
       return res.status(404).send("please provide the story,userChoice");
   }
   if (!process.env.MODEL_API_KEY) {
@@ -87,7 +87,7 @@ async function yourStory(req:Request,res:Response) {
       const msg = `Continue the story given below based on the user's choice:
                   Story: ${story}
                   question: ${question}
-                  User's choice: ${userChoice}
+                  User's choice: ${option}
                   Continue the story in json format with the next part of the story and another question with options.
                   give me in json format example: 
                   {

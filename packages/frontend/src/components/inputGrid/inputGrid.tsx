@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './HighlightGrid.css';
+import './inputGrid.css';
 
 const options = ["Option 1", "Option 2", "Option 3"];
 

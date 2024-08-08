@@ -4,11 +4,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LoginCard from './login/login'
 import SignUp from './signUp/signUp'
 import Stories from './stories/stories'
+import {
+  RecoilRoot,
+} from 'recoil';
 
 function App() {
  
   return (
-    <Router>
+    <RecoilRoot>
+      <Router>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginCard />} />
@@ -16,6 +20,8 @@ function App() {
       <Route path="/signUp" element={<SignUp/>}/>
     </Routes>
   </Router>
+    </RecoilRoot>
+    
 
   )
 }
