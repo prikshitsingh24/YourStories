@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import './CharacterPrompts.css';
+import { characterState, topicState } from '../../states/dropDownState';
+import {useRecoilState} from 'recoil';
+import './inputPrompt.css';
 
 const CharacterPrompts: React.FC = () => {
-  const [topic, setTopic] = useState('');
-  const [characterName, setCharacterName] = useState('');
-
-  const handleSubmit = () => {
-    console.log('Topic:', topic);
-    console.log('Character Name:', characterName);
-    // Add your submission logic here
-  };
+  const [topic, setTopic] = useRecoilState(topicState)
+  const [characterName, setCharacterName] = useRecoilState(characterState);
 
   return (
     <div className="container">
@@ -35,9 +31,6 @@ const CharacterPrompts: React.FC = () => {
           />
         </div>
       </div>
-      <button className="submit-button" onClick={handleSubmit}>
-        Make it Happen !
-      </button>
     </div>
   );
 };

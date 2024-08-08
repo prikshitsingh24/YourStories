@@ -1,0 +1,72 @@
+  
+ 
+  .content {
+	font-size: 1.2em;
+	line-height: 1.6;
+	z-index: 1;
+  }
+ 
+ 
+ 
+ /* Additional styling for the text */
+  .storycontent{
+	position: fixed;
+	z-index: 1;
+	margin: 0 0 10px;
+  }
+
+.storyQuestion{
+	
+	position: fixed;
+	z-index: 1;
+	margin: 0 0 10px;
+	margin: 10px;
+	 
+}
+
+
+.storyDiv{
+  margin:20px;
+  font-family: 'Times New Roman', Times, serif; /* Example font */
+  font-size: 16px; /* Example font size */
+  text-align: justify; /* Justify text */
+  line-height: 1.5; /* Example line height */
+}
+
+
+.questionDiv{
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	margin-left: 10px;
+	border-radius: 10px;
+	font-family: 'Times New Roman', Times, serif; /* Example font */
+	font-size: 16px; /* Example font size */
+	text-align: center; /* Justify text */
+	line-height: 1.5; 
+}
+
+.optionContainer{
+	display: flex;
+	flex-direction: row;
+}
+
+.optionDiv{
+	border-style: solid;
+	border-radius: 10px;
+	padding: 2px;
+	border-width: 2px;
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 190px;
+	font-family: 'Times New Roman', Times, serif; /* Example font */
+	font-size: 16px; /* Example font size */
+	text-align: center; /* Justify text */
+	line-height: 1.5; 
+}
+
+
+.optionDiv:hover{
+	cursor: pointer;
+	background-color: yellow;
+}

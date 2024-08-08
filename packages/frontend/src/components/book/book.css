@@ -40,13 +40,8 @@
 	z-index: 1;
 }
   
-  .content {
-	font-size: 1.2em;
-	line-height: 1.6;
-	z-index: 1;
-  }
   
-  .pageNumber {
+.pageNumber {
 	position: fixed;
 	bottom: 0;
 	margin-left: 240px;
@@ -56,20 +51,11 @@
 	margin-top: 20px;
 	font-style: italic;
   }
-  
-  /* Additional styling for the text */
-.storycontent{
-	position: fixed;
-	z-index: 1;
-	margin: 0 0 10px;
-  }
+
   
 .page-cover{
-
-	
 	
 	background-color: #27262f00;
-	
 	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
 	border-radius: 10px;
 	/* border: 2px solid #444; */
@@ -84,7 +70,6 @@
 	
 	
 }
-
 
 .dropDownRow{
 	display: flex;
@@ -111,7 +96,10 @@
 	position: fixed;
 }
 
-
+.dropdownCollection{
+	display: flex;
+	flex-direction: row;
+}
 
 
 .HeadingCover {
@@ -126,9 +114,58 @@
   font-size:90px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for depth */
   mix-blend-mode: overlay; /* Blend the text with the background */
-  
+}
 
-  
-  
-  
+
+.titleDiv{
+	display: flex;
+	height: 100px;
+	margin-top: 400px;
+    margin-left: 120px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+     
+    padding: 20px;
+    
+	z-index: 2;
+	position: fixed;
+}
+
+.instructionDiv{
+	display: flex;
+	flex-direction: column;
+	height: 250px;
+	margin-top: 390px;
+	margin-left: 80px;
+	margin-right: 10px;
+	align-items: center;
+	justify-content: center; 
+	padding: 20px;
+	z-index: 2;
+	position: fixed;
+	font-family: "Island Moments",cursive;
+	font-weight:bolder;
+	font-style:italic;
+	color:rgb(255, 238, 0);
+	font-size: 45px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for depth */
+	mix-blend-mode: overlay;
+}
+
+
+.titleCover{
+width: 500px;
+height: 200px;
+font-family: "Island Moments",cursive;
+  font-weight:bolder;
+  font-style:italic;
+  color:rgb(255, 238, 0);
+  position: fixed;
+  z-index: 2;
+  right:40px;
+  top: 80px;
+  font-size:55px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for depth */
+  mix-blend-mode: overlay; /* Blend the text with the background */
 }

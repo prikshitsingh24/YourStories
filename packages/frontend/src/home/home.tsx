@@ -11,7 +11,7 @@ function Home() {
             <div className='homeText'>Welcome to YourStories, where your imagination meets technology!</div>
             
             <Link to="/login">
-              <button>Try it!</button>
+              <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300'>Try it!</div>
             </Link>
           </div>
         </section>
