@@ -10,7 +10,7 @@ import {useRecoilState} from 'recoil';
 import { bookFlipOnOptionState, bookFlipState } from '../../states/bookFlipState';
 import { dropdownData } from '../../data/dropDownData';
 import { genreState, settingState, lengthState, ageState, characterState, topicState } from '../../states/dropDownState';
-import { optionsState, questionState, storyState, titleState, wholeStoryState } from '../../states/bookItemsState';
+import { continueOptionsState, continueQuestionState, continueStoryState, optionsState, questionState, storyState, titleState, wholeStoryState } from '../../states/bookItemsState';
 import PageComponent from '../page/pageComponent';
 import { addPageState } from '../../states/pageState';
 import * as React from 'react';
@@ -142,6 +142,7 @@ const PageCoverLast = React.forwardRef((props:any, ref:any) => {
 
 const Page = React.forwardRef((props:any, ref:any) => {
   return (
+
     <div ref={ref}> 
       <div className='internalpage'>
         <div className=' h-[725px]' style={{borderLeft: '0',boxShadow: 'inset 7px 0 30px -7px rgba(0, 0, 0, .4)',backgroundColor: 'hsl(32, 38%, 91%)',
@@ -149,6 +150,7 @@ const Page = React.forwardRef((props:any, ref:any) => {
     overflow: 'hidden'}}></div>
       </div>
       <PageComponent story={props.story} question={props.question} options={props.options}></PageComponent>
+
       <div className="pageNumber">Page number: {props.number}</div>
     </div>
   );
@@ -164,6 +166,9 @@ function MyBook() {
   const [pages, setPages] = useState<any>([]);
   const [wholeStory, setWholeStory] = useRecoilState(wholeStoryState);
   const [addPage,setAddPage]=useRecoilState(addPageState);
+  const [continueStory, setContinueStory] = useRecoilState(continueStoryState);
+  const [continueQuestion, setContinueQuestion] = useRecoilState(continueQuestionState);
+  const [continueOptions, setContinueOptions] = useRecoilState<string[]>(continueOptionsState);
 
 
   
@@ -171,7 +176,7 @@ function MyBook() {
     if (story) {
       const storyPages = [];
       let currentPageNumber = 1;
-  
+      setWholeStory({story,question,options});
         storyPages.push(
           <Page
             key={currentPageNumber}
@@ -190,17 +195,14 @@ function MyBook() {
 
   useEffect(() => {
     if (addPage && wholeStory.story) {
-      let content = wholeStory.story.slice(1801);
-      console.log(addPage);
-      console.log("rest of the content " + content);
   
       const newPage = (
         <Page
           key={`page-${addPage}`}
           number={addPage}
-          story={content}
-          question={question}
-          options={options}
+          story={continueStory}
+          question={continueQuestion}
+          options={continueOptions}
         />
       );
   

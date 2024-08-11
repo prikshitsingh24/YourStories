@@ -1,34 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './pageComponent.css';
 import { useRecoilState } from 'recoil';
-import { wholeStoryState } from '../../states/bookItemsState';
+import { continueOptionsState, continueQuestionState, continueStoryState, wholeStoryState } from '../../states/bookItemsState';
 import { addPageState } from '../../states/pageState';
 
 function PageComponent(props: any) {
   const [displayedWords, setDisplayedWords] = useState<string[]>([]);
   const [wordsIndex, setWordsIndex] = useState(0);
   const [showQuestions, setShowQuestions] = useState(false);
-  const [continueStory, setContinueStory] = useState("");
-  const [continueQuestion, setContinueQuestion] = useState("");
-  const [continueOptions, setContinueOptions] = useState<string[]>([]);
+  const [continueStory, setContinueStory] = useRecoilState(continueStoryState);
+  const [continueQuestion, setContinueQuestion] = useRecoilState(continueQuestionState);
+  const [continueOptions, setContinueOptions] = useRecoilState<string[]>(continueOptionsState);
   const [wholeStory, setWholeStory] = useRecoilState(wholeStoryState);
   const [addPage,setAddPage]=useRecoilState(addPageState);
 
 
-  useEffect(()=>{
-    console.log("whole story"+wholeStory.story);
-    if(wholeStory.story){
-    console.log(wholeStory.story.length);
-    if(wholeStory.story.length>1800){
-      console.log(`next page content ${wholeStory.story.length-1800}`);
-      setAddPage(2);
-      }
-    }
-    
-    return () => {
-      setWholeStory({story:displayedWords.join(' '),question:continueQuestion,option:continueOptions});
-    };
-  },[props.story,displayedWords,continueQuestion,continueOptions])
 
   useEffect(() => {
     if (!props.story) return; // If no story part, do nothing
@@ -47,6 +33,9 @@ function PageComponent(props: any) {
     }, 50); // Adjust the speed of word display as needed
 
   }, [props.story]);
+
+
+
   
 
   const handleOptionClick = (story: any, question: string, option: string) => {
@@ -84,8 +73,14 @@ function PageComponent(props: any) {
       console.log(result.question);
       console.log(options);
 
-      setWholeStory((prevStory) => prevStory + " " + result.story);
-      streamContinueStory(result.story);
+      setContinueStory(result.story);
+
+      setWholeStory((prevStory:any) => ({
+        ...prevStory,
+        story: (prevStory.story || '') + ' ' + result.story,
+      }));
+     
+      
 
     } catch (error) {
       console.error('Error:', error);
@@ -113,7 +108,27 @@ function PageComponent(props: any) {
       
     };
   };
+  useEffect(()=>{
+    console.log("lenght",wholeStory.story.length)
+    if(wholeStory.story.length>2300*addPage){
+      console.log('hiiiiii');
+      const wordsPerPage = 1800; // Adjust this value as needed
+      const totalWords = wholeStory.story.length;
+      const pageCount = Math.ceil(totalWords / wordsPerPage);
 
+      // console.log(`Total words: ${totalWords}`);
+      // console.log(`Page count: ${pageCount}`);
+
+      if (pageCount > 1) {
+        setAddPage(pageCount);
+        // console.log(`Next page content starts at word ${(pageCount - 1) * wordsPerPage + 1}`);
+      }
+  
+    }else if(props.number == addPage){
+      streamContinueStory(continueStory)
+      console.log('byeeeee')
+    }
+  },[wholeStory])
   return (
     <div className="content">
       <div className='storycontent'>
