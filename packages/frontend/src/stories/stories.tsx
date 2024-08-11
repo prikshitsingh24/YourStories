@@ -219,6 +219,26 @@ import MyBook from '../components/book/book';
 import { useRecoilState } from 'recoil';
 import { bookOpenStatus } from '../states/bookStatus';
 import backgroundImage from '../assets/stories/background2.png'
+import { fantasyState, mysteryState, scienceFictionState } from '../states/esterEggs';
+
+import space from  '../assets/genreImges/sci-fi/space.png';
+import space2 from  '../assets/genreImges/sci-fi/space2.png';
+import space3 from  '../assets/genreImges/sci-fi/space3.png';
+import space4 from '../assets/genreImges/sci-fi/space4.png';
+import space5 from '../assets/genreImges/sci-fi/space5.png';
+
+
+
+import fantasy2 from  '../assets/genreImges/fantasy/fantasy2.png';
+import fantasy3 from  '../assets/genreImges/fantasy/fantasy3.png';
+import fantasy4 from  '../assets/genreImges/fantasy/fantasy4.png';
+import fantasy5 from  '../assets/genreImges/fantasy/fantasy5.png';
+
+import mystery1 from '../assets/genreImges/mystery/mystery1.png';
+import mystery2 from '../assets/genreImges/mystery/mystery2.png';
+import mystery3 from '../assets/genreImges/mystery/mystery3.png';
+import mystery4 from '../assets/genreImges/mystery/mystery4.png';
+
 
 
 const Stories: React.FC = () => {
@@ -334,9 +354,39 @@ const Stories: React.FC = () => {
   };
   
   const [bookOpen,setBookOpen]=useRecoilState(bookOpenStatus);
+  const [fantasy,setFantasy]=useRecoilState(fantasyState);
+  const [scienceFiction,setScienceFiction]=useRecoilState(scienceFictionState);
+  const [mystery,setMystery]=useRecoilState(mysteryState);
+
 
   return (
     <div className="yourstoriesBody">
+      {fantasy?(
+        <>
+        <img className='fantasy-2-image' src={fantasy2} alt="" />
+        <img className='fantasy-3-image' src={fantasy3} alt="" />
+        <img className='fantasy-4-image' src={fantasy4} alt="" />
+        <img className='fantasy-5-image' src={fantasy5} alt="" />
+        </>
+      ):scienceFiction?(
+        <>
+        <img className='space-1-image' src={space} alt="" />
+        <img className='space-2-image' src={space2} alt="" />
+        <img className='space-3-image' src={space3} alt="" />
+        <img className='space-4-image' src={space4} alt="" />
+        <img className='space-5-image' src={space5} alt="" />
+        </>
+      ):mystery?(
+        <>
+        <img className='mystery-1-image' src={mystery1} alt="" />
+        <img className='mystery-2-image' src={mystery2} alt="" />
+        <img className='mystery-3-image' src={mystery3} alt="" />
+        <img className='mystery-4-image' src={mystery4} alt="" />
+        </>
+      ):(
+        <>
+        </>
+      )}
       <img className="background-img" src={backgroundImage} alt="" />
       <div className="stories">
         <Hamburger onClick={handleHamburgerClick} />

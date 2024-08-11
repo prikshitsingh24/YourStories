@@ -83,7 +83,7 @@ async function yourStory(req:Request,res:Response) {
       return res.status(404).send("Api key not provided");
   } else {
       const genAI = new GoogleGenerativeAI(process.env.MODEL_API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const msg = `Continue the story given below based on the user's choice:
                   Story: ${story}
                   question: ${question}

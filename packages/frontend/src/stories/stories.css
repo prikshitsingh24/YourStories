@@ -136,7 +136,7 @@ margin-bottom: 10px;
   align-items: center;
   bottom: 170px;
   transform: translateX(0px);
-
+  z-index: 2;
 }
 
 
@@ -144,13 +144,14 @@ margin-bottom: 10px;
 
 .bookBody-open {
   display: flex;
-  position: relative;
+  position: fixed;
   justify-content: center;
   align-items: center;
   width: 100%;
   bottom: 62px;
   transform: translateX(20px);
   transition: transform 0.7s ease-in;
+  z-index: 2;
 }
 
 
@@ -160,4 +161,126 @@ margin-bottom: 10px;
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+
+
+.space-1-image{
+  position: fixed;
+  z-index: 1;
+  right: 40px;
+  top: 50px;
+  width: 200px;
+}
+
+
+.space-2-image{
+  position: fixed;
+  z-index: 1;
+  left: 30px;
+  top: 30px;
+  width: 350px;
+}
+
+
+.space-3-image{
+  position: fixed;
+  z-index: 1;
+  left: 70px;
+  bottom: 30px;
+  width: 450px;
+}
+
+.space-4-image{
+  position: fixed;
+  z-index: 1;
+  right: 30px;
+  bottom: 30px;
+  width: 450px;
+}
+
+
+.space-5-image{
+  position: fixed;
+  z-index: 1;
+  right: 950px;
+  bottom: 550px;
+  width: 420px;
+  transform: rotateZ(-40deg);
+}
+
+
+.fantasy-2-image{
+  position: fixed;
+  z-index: 1;
+  left: 80px;
+  bottom: 50px;
+  width: 400px;
+}
+
+
+.fantasy-3-image{
+  position: fixed;
+  z-index: 1;
+  right: 40px;
+  top: 50px;
+  width: 200px;
+}
+
+
+
+.fantasy-4-image{
+  position: fixed;
+  z-index: 1;
+  left: 80px;
+  top: 70px;
+  width: 390px;
+  transform: rotateZ(-20deg);
+}
+
+
+.fantasy-5-image{
+  position: fixed;
+  z-index: 1;
+  right: 40px;
+  bottom: 60px;
+  width: 300px;
+  
+}
+
+
+
+.mystery-1-image{
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  top: 50px;
+  width: 200px;
+}
+
+
+.mystery-2-image{
+  position: fixed;
+  z-index: 1;
+  left: 80px;
+  top: 30px;
+  width: 350px;
+}
+
+
+.mystery-3-image{
+  position: fixed;
+  z-index: 1;
+  left: 70px;
+  bottom: 90px;
+  width: 300px;
+}
+
+.mystery-4-image{
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  bottom: 50px;
+  width: 350px;
+  transform: rotateZ(-40deg);
 }

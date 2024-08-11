@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import "./dropDown.css"; // Assuming you have a CSS file for styling
 import { DropdownData } from '../../types/dropdownTypes';
 import { genreState, settingState, lengthState, ageState } from '../../states/dropDownState';
+import { fantasyState, mysteryState, scienceFictionState } from '../../states/esterEggs';
 
 interface DropDownProps {
   data: DropdownData;
@@ -15,10 +16,28 @@ const DropDown: React.FC<DropDownProps> = ({ data }) => {
   const [length, setLength] = useRecoilState(lengthState);
   const [age, setAge] = useRecoilState(ageState);
 
+  const [fantasy,setFantasy]=useRecoilState(fantasyState);
+  const [scienceFiction,setScienceFiction]=useRecoilState(scienceFictionState);
+  const [mystery,setMystery]=useRecoilState(mysteryState);
+
   const setValue = (value: string) => {
     switch (data.title) {
       case 'Genre':
+        console.log(value);
         setGenre(value);
+        if(value=='mystery'){
+          setScienceFiction(false);
+          setFantasy(false);
+          setMystery(true);
+        }else if(value=='sci-fi'){
+          setFantasy(false);
+          setMystery(false);
+          setScienceFiction(true);
+        }else{
+          setScienceFiction(false);
+          setMystery(false);
+          setFantasy(true);
+        }
         break;
       case 'Setting':
         setSetting(value);
