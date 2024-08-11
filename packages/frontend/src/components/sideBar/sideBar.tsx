@@ -35,10 +35,10 @@ const Sidebar: React.FC<{
           </div>
         )}
       </div>
-      <div className={`sidebar-content${isOpen ? '-expanded' : ''}`} style={{ marginTop: '50px' }}>
+      <div className={`sidebar-content${isOpen ? '-expanded' : ''}`} style={{ marginTop: '20px' }}>
         <input
           type="text"
-          className="search-input p-2 mb-4 w-full rounded-md" 
+          className="search-input p-2 mb-4 w-full rounded-md border-4 border-solid border-black" 
           placeholder="Search books..."
           style={{ color: "white", backgroundColor: "#3b81f5" }}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -48,6 +48,7 @@ const Sidebar: React.FC<{
           deleteMode={deleteMode}
           onBookSelect={onBookSelect}
           selectedBooks={selectedBooks}
+          isOpen={isOpen}
         />
       </div>
     </div>

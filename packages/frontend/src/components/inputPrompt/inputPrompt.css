@@ -20,20 +20,25 @@
 }
 
 .prompt-header {
-  font-family: 'Island Moments', cursive;
+
   font-weight: bold;
   color: rgb(212, 198, 1);
-  font-size: 30px;
+  font-size: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   margin-bottom: 5px;
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .input-field {
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.42);
-  font-family: 'Island Moments', cursive;
-  font-weight: bold;
-  font-size: 30px;
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 16px;
   color: rgb(212, 198, 1);
   background: none;
   outline: none;
@@ -54,13 +59,15 @@
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
-  font-family: 'Island Moments', cursive;
-  font-weight: bold;
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 30px;
   color: rgb(212, 198, 1);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
+  margin-top: 40px;
 }
 
 .submit-button:hover {

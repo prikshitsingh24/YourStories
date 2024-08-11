@@ -216,6 +216,9 @@ import { useState, useEffect } from 'react';
 import './stories.css';
 import Sidebar from '../components/sideBar/sideBar';
 import MyBook from '../components/book/book';
+import { useRecoilState } from 'recoil';
+import { bookOpenStatus } from '../states/bookStatus';
+import backgroundImage from '../assets/stories/background2.png'
 
 
 const Stories: React.FC = () => {
@@ -330,9 +333,11 @@ const Stories: React.FC = () => {
     }
   };
   
+  const [bookOpen,setBookOpen]=useRecoilState(bookOpenStatus);
 
   return (
     <div className="yourstoriesBody">
+      <img className="background-img" src={backgroundImage} alt="" />
       <div className="stories">
         <Hamburger onClick={handleHamburgerClick} />
         <Sidebar 
@@ -345,9 +350,9 @@ const Stories: React.FC = () => {
           onDeleteBooks={handleDeleteBooks}
           selectedBooks={selectedBooks}
         />
-        <div className='bookBody'>
-//           <MyBook />
-//         </div>
+        <div className={`${bookOpen?'bookBody-open':'bookBody-closed'}`}>
+           <MyBook />
+         </div>
       </div>
     </div>
   );

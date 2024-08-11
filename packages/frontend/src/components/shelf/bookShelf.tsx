@@ -160,7 +160,7 @@ const Book: React.FC<{ title: string; _id: string; deleteMode: boolean; isSelect
   );
 };
 
-const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode: boolean; onBookSelect: (bookId: string) => void; selectedBooks: Set<string> }> = ({ books, deleteMode, onBookSelect, selectedBooks }) => {
+const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode: boolean; onBookSelect: (bookId: string) => void; selectedBooks: Set<string>;isOpen:any }> = ({ books, deleteMode, onBookSelect, selectedBooks,isOpen }) => {
   const [currentPage, setCurrentPage] = React.useState(0);
   const booksPerPage = 24; // 3 rows * 8 books
   const totalPages = Math.ceil(books.length / booksPerPage);
@@ -178,7 +178,7 @@ const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode:
 
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="relative w-full h-[200px] bg-contain bg-center p-1 rounded-lg shadow-xl" style={{ backgroundImage: `url(${shelfImage})`, width: '470px', height: '700px' }}>
+      <div className="relative w-full h-[200px] bg-contain bg-center p-1 rounded-lg shadow-xl border-4 border-solid border-black" style={{ backgroundImage: `url(${shelfImage})`, width: '470px', height: '700px' }}>
         <div className="absolute ml-5 mt-3 h-full grid grid-rows-4 gap-[14rem]">
           {[...Array(3)].map((_, rowIndex) => (
             <div key={rowIndex} className="flex justify-between">
@@ -196,10 +196,11 @@ const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode:
           ))}
         </div>
       </div>
-      <div className="mt-4 flex justify-between items-center">
+      {isOpen?(
+        <div className="mt-4 flex justify-between items-center">
         <button
           onClick={prevPage}
-          className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="bg-blue-500 text-white p-2 border-2 border-solid border-black rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           <ChevronLeft size={24} />
         </button>
@@ -208,11 +209,16 @@ const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode:
         </span>
         <button
           onClick={nextPage}
-          className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="bg-blue-500 text-white p-2 border-2 border-solid border-black rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           <ChevronRight size={24} />
         </button>
       </div>
+      ):(
+        <div className="mt-4 flex justify-between items-center">
+        
+      </div>
+      )}
     </div>
   );
 };
