@@ -7,6 +7,7 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
 }
 
 /* Hamburger menu styles */
@@ -46,10 +47,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: solid 4px black;
+  border-left: none;
 }
 
 .sidebar.expanded {
-  width: 410px; /* Adjusted for practical usability */
+  width: 510px; 
+  display: flex;/* Adjusted for practical usability */
 }
 
 /* Sidebar icons */
@@ -57,23 +61,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  
+  padding-top: 60px;
 }
-
-.icon_setting {
-  position: fixed;
-  top: 50px;
-  left: 10px; /* Adjusted for better alignment */
-  padding: 15px;
+/* Sidebar icons */
+.sidebar-icons-expanded {
+  padding-top: 20px;
   background: none;
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 10;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 470px;
+}
+.icon_setting{
+margin-bottom: 10px;
 }
 
+  .icon_delete-red{
+    color: red;
+    }
 .icon_taskbar {
   margin: 20px 0;
   color: black;
@@ -87,12 +95,20 @@
 
 /* Sidebar content */
 .sidebar-content {
-  margin-top: 50px;
-  display: none;
+  transform: translateX(-220px); /* Initial position off-screen */
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s ease-out; /* Fixed typo in 'transform' */
 }
 
+/* Sidebar content expanded state */
+.sidebar-content-expanded {
+  transform: translateX(0); /* Move to the original position */
+  margin-top: 50px; /* Additional styling when expanded */
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease-in; /* Fixed typo in 'transform' */
+}
 
 .sidebar-content a {
   color: black;
@@ -113,12 +129,35 @@
 
 
 /* Centering content within bookBody */
-.bookBody {
+.bookBody-closed {
   display: flex;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  bottom: 170px;
+  transform: translateX(0px);
+
 }
 
 
 
+
+.bookBody-open {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: 62px;
+  transform: translateX(20px);
+  transition: transform 0.7s ease-in;
+}
+
+
+.background-img{
+  position: fixed;
+  z-index: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -26,11 +26,13 @@
 
 
 .storyDiv{
-  margin:20px;
+
   font-family: 'Times New Roman', Times, serif; /* Example font */
   font-size: 16px; /* Example font size */
   text-align: justify; /* Justify text */
   line-height: 1.5; /* Example line height */
+  color: #785e3a;
+  padding: 20px;
 }
 
 
@@ -38,17 +40,19 @@
 	border-style: solid;
 	border-width: 2px;
 	border-color: black;
-	margin-left: 10px;
 	border-radius: 10px;
 	font-family: 'Times New Roman', Times, serif; /* Example font */
 	font-size: 16px; /* Example font size */
 	text-align: center; /* Justify text */
 	line-height: 1.5; 
+	margin-bottom: 5px;
+	color: #785e3a;
 }
 
 .optionContainer{
 	display: flex;
 	flex-direction: row;
+	
 }
 
 .optionDiv{
@@ -56,17 +60,17 @@
 	border-radius: 10px;
 	padding: 2px;
 	border-width: 2px;
-	margin-top: 10px;
-	margin-left: 10px;
+	margin-right: 2px;
 	width: 190px;
 	font-family: 'Times New Roman', Times, serif; /* Example font */
 	font-size: 16px; /* Example font size */
 	text-align: center; /* Justify text */
 	line-height: 1.5; 
+	color: #785e3a;
 }
 
 
 .optionDiv:hover{
 	cursor: pointer;
-	background-color: yellow;
+	background-color: rgb(212, 198, 1);
 }

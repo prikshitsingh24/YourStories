@@ -2,7 +2,8 @@ import  { useEffect, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import './book.css'
 import DropDown from '../dropDown/dropDown';
-import pageTexture from '../../assets/stories/bookCovercrop.png';
+import converFront from '../../assets/stories/bookfront2.png';
+import converBack from '../../assets/stories/bookback.png';
 import page from '../../assets/stories/pagealinbgrem.png';
 import CharacterPrompts from '../inputPrompt/inputPrompt';
 import {useRecoilState} from 'recoil';
@@ -13,8 +14,18 @@ import { continueOptionsState, continueQuestionState, continueStoryState, option
 import PageComponent from '../page/pageComponent';
 import { addPageState } from '../../states/pageState';
 import * as React from 'react';
+import { bookOpenStatus } from '../../states/bookStatus';
 
-
+const data={
+  "title": "Echoes of the Bat",
+  "story": "Neo-Gotham, 2149. The city, a jungle of shimmering chrome and pulsating neon, hummed with a deceptive tranquility. Beneath the sleek facade, whispers of unrest flickered like glitches in the system. The once-revered Batman, a fading myth, had vanished decades ago, leaving behind a legacy shrouded in mystery and a void yet to be filled. Tom, a gifted tech artisan haunted by a fragmented past, found himself thrust into the heart of this enigmatic city. His only solace, a dilapidated workshop inherited from his grandfather, held secrets that stretched back to the Dark Knight himself. When a cryptic message, encoded with a familiar bat insignia, appeared on Tom's datapad, his world tilted on its axis. The message was a desperate plea for help, echoing from a ghost of the past. It spoke of a hidden truth, a conspiracy threatening to plunge Neo-Gotham into an era of unprecedented darkness. Driven by a sense of duty he couldn't ignore, Tom delved deeper into the enigma, unraveling forgotten archives and chasing after digital shadows. The closer he got, the more he realized his grandfather's workshop wasn't just a haven, it was a vault – containing the last vestiges of the Batman's arsenal.",
+  "question": "Will Tom heed the call, stepping into the shadows of his lineage to become the hero Neo-Gotham desperately needs?",
+  "options": {
+    "i": "Tom, overwhelmed by the responsibility and fearing for his own safety, chooses to ignore the message, burying himself further into his work.",
+    "ii": "Intrigued but cautious, Tom decides to investigate the message's origin, utilizing his tech skills to uncover the truth without revealing himself.",
+    "iii": "Embracing his legacy, Tom delves headfirst into the mystery, utilizing his grandfather's hidden arsenal to become the new guardian of Neo-Gotham."
+  }
+}
 
 const PageCover = React.forwardRef((props:any, ref:any) => {
   const [isBookFlip,setIsBookFlip]=useRecoilState(bookFlipState);
@@ -30,7 +41,7 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
   const [question,setQuestion]=useRecoilState(questionState);
   const [options,setOptions]=useRecoilState(optionsState);
   
-
+  const [bookOpen,setBookOpen]=useRecoilState(bookOpenStatus);
 
   function setBookFlip(){
     sendDataToBackend();
@@ -60,13 +71,14 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
       }
 
       const result = await response.json();
-      console.log('Success:', result);
+
       setTitle(result.title);
       setStory(result.story);
       setQuestion(result.question);
       const options=[result.options.i,result.options.ii,result.options.iii];
       setOptions(options);
       setIsBookFlip(true);
+      setBookOpen(true);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -102,18 +114,43 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
           </div>
         )}
         <div className='coverdiv'>
-          <img className='coverfront' height={710} width={610} src={pageTexture} alt="" />
+          <img className='h-[790px] w-[780px]' src={converFront} alt="" />
         </div>
       </div>
     </div>
   );
 });
 
+const PageCoverLast = React.forwardRef((props:any, ref:any) => {
+
+
+
+
+  return (
+    <div className="page-cover" ref={ref} data-density="hard">
+      <div className="page-content">
+        <div className='coverdiv'>
+          <img className='h-[725px] w-[780px]' src={converBack} alt="" />
+        </div>
+      </div>
+    </div>
+  );
+});
+
+
+
+
 const Page = React.forwardRef((props:any, ref:any) => {
   return (
-    <div className="demoPage1" ref={ref}> 
-      <div className='internalpage'><img src={page} height={705} width={610} alt="" /></div>
-      <PageComponent story={props.story} question={props.question} options={props.options} number={props.number}></PageComponent>
+
+    <div ref={ref}> 
+      <div className='internalpage'>
+        <div className=' h-[725px]' style={{borderLeft: '0',boxShadow: 'inset 7px 0 30px -7px rgba(0, 0, 0, .4)',backgroundColor: 'hsl(32, 38%, 91%)',
+       border: '1px solid #c2b5a3',
+    overflow: 'hidden'}}></div>
+      </div>
+      <PageComponent story={props.story} question={props.question} options={props.options}></PageComponent>
+
       <div className="pageNumber">Page number: {props.number}</div>
     </div>
   );
@@ -132,6 +169,7 @@ function MyBook() {
   const [continueStory, setContinueStory] = useRecoilState(continueStoryState);
   const [continueQuestion, setContinueQuestion] = useRecoilState(continueQuestionState);
   const [continueOptions, setContinueOptions] = useRecoilState<string[]>(continueOptionsState);
+
 
   
   useEffect(() => {
@@ -185,24 +223,22 @@ function MyBook() {
       maxWidth={1200}
       minHeight={800}
       maxHeight={1600}
-      drawShadow={true}
       flippingTime={1000}
       usePortrait={true}
       startZIndex={1}
-      autoSize={true}
-      maxShadowOpacity={0.5}
+      maxShadowOpacity={0.2}
       showCover={true}
       mobileScrollSupport={true}
       clickEventForward={true}
       useMouseEvents={isBookFlip}
-      swipeDistance={30}
+      swipeDistance={20}
       showPageCorners={true}
       disableFlipByClick={true}
       renderOnlyPageLengthChange={false}
       >
         <PageCover number="0">Your Stories</PageCover>
         {pages}
-    
+        <PageCoverLast number="900000000">Your Stories</PageCoverLast>
 </HTMLFlipBook>
 
     

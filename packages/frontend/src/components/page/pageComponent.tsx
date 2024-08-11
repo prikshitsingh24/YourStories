@@ -137,8 +137,8 @@ function PageComponent(props: any) {
         </div>
         {showQuestions && (
           <>
-            <div>
-              <br />
+            <div style={{textAlign:'center',padding:'20px'}}>
+   
               {continueQuestion ? (
                 <div className="questionDiv">
                   {continueQuestion}
