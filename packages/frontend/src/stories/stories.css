@@ -49,7 +49,8 @@
 }
 
 .sidebar.expanded {
-  width: 410px; /* Adjusted for practical usability */
+  width: 510px; 
+  display: flex;/* Adjusted for practical usability */
 }
 
 /* Sidebar icons */
@@ -57,23 +58,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  
+  padding-top: 60px;
 }
-
-.icon_setting {
-  position: fixed;
-  top: 50px;
-  left: 10px; /* Adjusted for better alignment */
-  padding: 15px;
+/* Sidebar icons */
+.sidebar-icons-expanded {
+  padding-top: 20px;
   background: none;
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 10;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 470px;
 }
-
+.icon_setting{
+margin-bottom: 10px;
+}
+.icon_delete{
+  margin-bottom: 10px;
+  }
+  .icon_delete-red{
+    color: red;
+    }
 .icon_taskbar {
   margin: 20px 0;
   color: black;
@@ -89,6 +96,13 @@
 .sidebar-content {
   margin-top: 50px;
   display: none;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.sidebar-content-expended{
+  margin-top: 50px;
+  
   flex-direction: column;
   align-items: center;
 }

@@ -5,6 +5,7 @@ import connectmongoDb from './mongo';
 import cookieParser from 'cookie-parser'; 
 import cors from 'cors';
 import storyTeller from './routes/storyTeller';
+import booksRouter from './routes/books';
 
 
 const app = express();
@@ -21,6 +22,7 @@ connectmongoDb()
 
 app.use('/api/user',router);
 app.use('/api/storyteller',storyTeller)
+app.use('/api/books',booksRouter)
 
 app.get('/', (req:any, res:any) => {
   res.send('This is YourStories Backend');

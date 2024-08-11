@@ -45,7 +45,9 @@ async function handleLogInUser(req:Request,res:Response){
     
     const token=auth.setUser(user);
     res.cookie("uid",token);
-    return res.status(201).json({ message: "Success "+"user logged in "+"sessionId : "+token });
+    return res.status(201).json({ message: "Login successful",
+      sessionId: token,
+      userId: user._id,});
 }
 
 async function handleDeletUserById(req:Request,res:Response){
