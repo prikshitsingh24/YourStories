@@ -50,36 +50,36 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
   }
 
   const sendDataToBackend = async () => {
-    // const data = {
-    //   topic,
-    //   genre,
-    //   age,
-    //   setting,
-    //   characters,
-    //   length
-    // };
+    const data = {
+      topic,
+      genre,
+      age,
+      setting,
+      characters,
+      length
+    };
 
     try {
-      // const response = await fetch('http://localhost:8000/api/storyteller/start', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data),
-      // });
+      const response = await fetch('http://localhost:8000/api/storyteller/start', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      // if (!response.ok) {
-      //   throw new Error('Network response was not ok');
-      // }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-      // const result = await response.json();
+      const result = await response.json();
 
-      setTitle(data.title);
-      setStory(data.story);
-      setQuestion(data.question);
-      const options=[data.options.i,data.options.ii,data.options.iii];
+      setTitle(result.title);
+      setStory(result.story);
+      setQuestion(result.question);
+      const options=[result.options.i,result.options.ii,result.options.iii];
       setOptions(options);
-      saveContentToDatabase(data.title,data.story,genre);
+      saveContentToDatabase(result.title,result.story,genre);
    
     } catch (error) {
       console.error('Error:', error);

@@ -10,7 +10,7 @@ function Home() {
             <h1 className='mainHeadHome'>YourStories</h1>
             <div className='homeText'>Welcome to YourStories, where your imagination meets technology!</div>
             
-            <Link to="/stories">
+            <Link to="/login">
               <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300'>Try it!</div>
             </Link>
           </div>

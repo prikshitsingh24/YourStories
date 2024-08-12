@@ -110,9 +110,9 @@ function PageComponent(props: any) {
   };
   useEffect(()=>{
     console.log("lenght",wholeStory.story.length)
-    if(wholeStory.story.length>2000*addPage){
+    if(wholeStory.story.length>400*addPage){
       console.log('hiiiiii');
-      const wordsPerPage = 1800; // Adjust this value as needed
+      const wordsPerPage = 400; // Adjust this value as needed
       const totalWords = wholeStory.story.length;
       const pageCount = Math.ceil(totalWords / wordsPerPage);
 
