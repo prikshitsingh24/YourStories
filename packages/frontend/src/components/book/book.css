@@ -66,6 +66,12 @@
 	
 }
 
+.coverBackdiv{
+	position: fixed;
+	right: 247px;
+	bottom: 143px;
+}
+
 .dropDownRow{
 	display: flex;
     flex-direction: row;

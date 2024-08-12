@@ -2,10 +2,9 @@ import { Request, Response } from 'express';
 import Book from '../models/books';
 import User from '../models/user';
 
-// Controller to add a new book to a user
 export const addBook = async (req: Request, res: Response) => {
   const { userId } = req.params;
-  const { title, data } = req.body;
+  const { title, data, genre } = req.body;
 
   try {
     // Ensure the user exists before adding a book
@@ -16,7 +15,7 @@ export const addBook = async (req: Request, res: Response) => {
     }
 
     // Create and save the new book
-    const newBook = new Book({ title, data, userId });
+    const newBook = new Book({ title, data, genre, userId });
     await newBook.save();
 
     return res.status(201).json({ message: 'Book added successfully', book: newBook });

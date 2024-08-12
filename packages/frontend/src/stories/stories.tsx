@@ -238,41 +238,45 @@ import mystery1 from '../assets/genreImges/mystery/mystery1.png';
 import mystery2 from '../assets/genreImges/mystery/mystery2.png';
 import mystery3 from '../assets/genreImges/mystery/mystery3.png';
 import mystery4 from '../assets/genreImges/mystery/mystery4.png';
+import { savedGenreState, savedStoryState, savedTitleState } from '../states/savedBook';
+import converBack from '../assets/stories/bookback.png';
 
 
 
 const Stories: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [books, setBooks] = useState<{ title: string; _id: string }[]>([]);
   const [filteredBooks, setFilteredBooks] = useState<{ title: string; _id: string }[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [deleteMode, setDeleteMode] = useState(false);
   const [selectedBooks, setSelectedBooks] = useState<Set<string>>(new Set());
+  const [savedTitle,setSavedTitle]=useRecoilState(savedTitleState);
+  const [savedStory,setSavedStory]=useRecoilState(savedStoryState);
 
   const fetchBooks = async () => {
-    const userId = localStorage.getItem('userId');
-    if (!userId) {
-      console.error('User ID is missing');
-      return;
-    }
+    // const userId = localStorage.getItem('userId');
+    // if (!userId) {
+    //   console.error('User ID is missing');
+    //   return;
+    // }
 
-    const url = `http://localhost:8000/api/books/${userId}/getbooks`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      if (response.ok && data.books) {
-        const formattedBooks = data.books.map((book: { title: string; _id: string }) => ({
-          title: book.title,
-          _id: book._id,
-        }));
-        setBooks(formattedBooks);
-        setFilteredBooks(formattedBooks);
-      } else {
-        console.error('Error fetching books:', data.message);
-      }
-    } catch (error) {
-      console.error('Error fetching books:', error);
-    }
+    // const url = `http://localhost:8000/api/books/${userId}/getbooks`;
+    // try {
+    //   const response = await fetch(url);
+    //   const data = await response.json();
+    //   if (response.ok && data.books) {
+    //     const formattedBooks = data.books.map((book: { title: string; _id: string }) => ({
+    //       title: book.title,
+    //       _id: book._id,
+    //     }));
+    //     setBooks(formattedBooks);
+    //     setFilteredBooks(formattedBooks);
+    //   } else {
+    //     console.error('Error fetching books:', data.message);
+    //   }
+    // } catch (error) {
+    //   console.error('Error fetching books:', error);
+    // }
   };
 
   useEffect(() => {
@@ -352,11 +356,74 @@ const Stories: React.FC = () => {
       console.error('Error deleting books:', error);
     }
   };
+
+
+  const handleOpenBook = async (bookId:string)=>{
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID is missing');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8000/api/books/${bookId}/bookbyid`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setSavedStory(data.data);
+        setSavedTitle(data.title);
+        setSavedGenre(data.genre);
+      } else {
+        console.error('Error deleting books:', await response.json());
+      }
+    } catch (error) {
+      console.error('Error deleting books:', error);
+    }
+  }
   
   const [bookOpen,setBookOpen]=useRecoilState(bookOpenStatus);
   const [fantasy,setFantasy]=useRecoilState(fantasyState);
   const [scienceFiction,setScienceFiction]=useRecoilState(scienceFictionState);
   const [mystery,setMystery]=useRecoilState(mysteryState);
+  const [savedGenre,setSavedGenre]=useRecoilState(savedGenreState);
+
+
+  useEffect(()=>{
+    if(savedGenre){
+      switch(savedGenre){
+        case 'sci-fi':
+          setFantasy(false);
+          setMystery(false);
+          setScienceFiction(true);
+          break;
+        case 'mystery':
+          setScienceFiction(false);
+          setFantasy(false);
+          setMystery(true);
+          break;
+        case 'fantasy':
+          setScienceFiction(false);
+          setMystery(false);
+          setFantasy(true);
+          break;
+        
+      }
+        
+    }
+  },[savedGenre])
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsOpen(false);
+    },1000)
+  },[])
 
 
   return (
@@ -387,6 +454,11 @@ const Stories: React.FC = () => {
         <>
         </>
       )}
+       {bookOpen && <div className="page-content">
+        <div className='coverBackdiv'>
+          <img className='h-[725px] w-[600px]' src={converBack} alt="" />
+        </div>
+      </div>}
       <img className="background-img" src={backgroundImage} alt="" />
       <div className="stories">
         <Hamburger onClick={handleHamburgerClick} />
@@ -399,6 +471,7 @@ const Stories: React.FC = () => {
           onBookSelect={handleBookSelect}
           onDeleteBooks={handleDeleteBooks}
           selectedBooks={selectedBooks}
+          onOpenBook={handleOpenBook}
         />
         <div className={`${bookOpen?'bookBody-open':'bookBody-closed'}`}>
            <MyBook />

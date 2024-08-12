@@ -6,7 +6,7 @@ export const dropdownData: DropdownData[] = [
     title: 'Genre',
     options: [
       { label: 'Fantasy', value: 'fantasy' },
-      { label: 'Science Fiction', value: 'sci-fi' },
+      { label: 'Sci-fi', value: 'sci-fi' },
       { label: 'Mystery', value: 'mystery' },
       // Add more options as needed
     ],

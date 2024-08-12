@@ -122,7 +122,7 @@ import * as React from 'react';
 
 const bookImages = [bookImage1, bookImage2, bookImage3, bookImage4, bookImage5, bookImage6, bookImage7, bookImage8, bookImage9, bookImage10];
 
-const Book: React.FC<{ title: string; _id: string; deleteMode: boolean; isSelected: boolean; onBookSelect: (bookId: string) => void }> = ({ title, _id, deleteMode, isSelected, onBookSelect }) => {
+const Book: React.FC<{ title: string; _id: string; deleteMode: boolean; isSelected: boolean; onBookSelect: (bookId: string) => void; onOpenBook:any }> = ({ title, _id, deleteMode, isSelected, onBookSelect,onOpenBook }) => {
   const randomImage = bookImages[Math.floor(Math.random() * bookImages.length)];
 
   const getShortTitle = (title: string) => {
@@ -136,7 +136,7 @@ const Book: React.FC<{ title: string; _id: string; deleteMode: boolean; isSelect
     <div
       className={`relative bg-contain rounded shadow-md overflow-hidden group ${deleteMode && isSelected ? 'bg-red-500' : ''}`}
       style={{ backgroundImage: `url(${randomImage})`, width: '52px', height: '220px' }}
-      onClick={() => deleteMode && onBookSelect(_id)}
+      onClick={() => deleteMode?onBookSelect(_id):onOpenBook(_id)}
     >
       {/* Partial Title - Always Visible */}
       <div className="absolute inset-0 flex items-center justify-center transform -rotate-90 origin-center">
@@ -160,7 +160,7 @@ const Book: React.FC<{ title: string; _id: string; deleteMode: boolean; isSelect
   );
 };
 
-const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode: boolean; onBookSelect: (bookId: string) => void; selectedBooks: Set<string>;isOpen:any }> = ({ books, deleteMode, onBookSelect, selectedBooks,isOpen }) => {
+const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode: boolean; onBookSelect: (bookId: string) => void; selectedBooks: Set<string>;isOpen:any;onOpenBook:any }> = ({ books, deleteMode, onBookSelect, selectedBooks,isOpen,onOpenBook }) => {
   const [currentPage, setCurrentPage] = React.useState(0);
   const booksPerPage = 24; // 3 rows * 8 books
   const totalPages = Math.ceil(books.length / booksPerPage);
@@ -190,6 +190,7 @@ const BookShelf: React.FC<{ books: { title: string; _id: string }[], deleteMode:
                   deleteMode={deleteMode}
                   isSelected={selectedBooks.has(book._id)}
                   onBookSelect={onBookSelect}
+                  onOpenBook={onOpenBook}
                 />
               ))}
             </div>

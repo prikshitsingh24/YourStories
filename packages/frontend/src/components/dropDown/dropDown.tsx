@@ -9,7 +9,7 @@ interface DropDownProps {
   data: DropdownData;
 }
 
-const DropDown: React.FC<DropDownProps> = ({ data }) => {
+const DropDown: React.FC<DropDownProps> = ({ data }:any) => {
   const [selectedOption, setSelectedOption] = useState(""); // Single selected option
   const [genre, setGenre] = useRecoilState(genreState);
   const [setting, setSetting] = useRecoilState(settingState);

@@ -12,6 +12,7 @@ const Sidebar: React.FC<{
   onBookSelect: (bookId: string) => void;
   onDeleteBooks: () => void;
   selectedBooks: Set<string>;
+  onOpenBook: (bookId: string) => void;
 }> = ({ 
   isOpen, 
   books, 
@@ -20,7 +21,8 @@ const Sidebar: React.FC<{
   onDeleteModeToggle,
   onBookSelect,
   onDeleteBooks,
-  selectedBooks
+  selectedBooks,
+  onOpenBook
 }) => {
   return (
     <div className={`sidebar ${isOpen ? 'expanded' : ''}`}>
@@ -49,6 +51,7 @@ const Sidebar: React.FC<{
           onBookSelect={onBookSelect}
           selectedBooks={selectedBooks}
           isOpen={isOpen}
+          onOpenBook={onOpenBook}
         />
       </div>
     </div>

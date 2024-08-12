@@ -30,7 +30,7 @@ function PageComponent(props: any) {
           return prevIndex; // Return prevIndex when words are finished
         }
       });
-    }, 50); // Adjust the speed of word display as needed
+    }, 70); // Adjust the speed of word display as needed
 
   }, [props.story]);
 
@@ -101,7 +101,7 @@ function PageComponent(props: any) {
           return prevIndex; // Return prevIndex when words are finished
         }
       });
-    }, 50); // Adjust the speed of word display as needed
+    }, 70); // Adjust the speed of word display as needed
     
     return () => {
       clearInterval(intervalId);
@@ -128,7 +128,7 @@ function PageComponent(props: any) {
       streamContinueStory(continueStory)
       console.log('byeeeee')
     }
-  },[wholeStory])
+  },[wholeStory,continueStory])
   return (
     <div className="content">
       <div className='storycontent'>

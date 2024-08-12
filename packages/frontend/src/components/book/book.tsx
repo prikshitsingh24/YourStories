@@ -15,9 +15,10 @@ import PageComponent from '../page/pageComponent';
 import { addPageState } from '../../states/pageState';
 import * as React from 'react';
 import { bookOpenStatus } from '../../states/bookStatus';
+import { savedStoryState, savedTitleState } from '../../states/savedBook';
 
 const data={
-  "title": "Echoes of the Bat",
+  "title": "Dead of the Bat",
   "story": "Neo-Gotham, 2149. The city, a jungle of shimmering chrome and pulsating neon, hummed with a deceptive tranquility. Beneath the sleek facade, whispers of unrest flickered like glitches in the system. The once-revered Batman, a fading myth, had vanished decades ago, leaving behind a legacy shrouded in mystery and a void yet to be filled. Tom, a gifted tech artisan haunted by a fragmented past, found himself thrust into the heart of this enigmatic city. His only solace, a dilapidated workshop inherited from his grandfather, held secrets that stretched back to the Dark Knight himself. When a cryptic message, encoded with a familiar bat insignia, appeared on Tom's datapad, his world tilted on its axis. The message was a desperate plea for help, echoing from a ghost of the past. It spoke of a hidden truth, a conspiracy threatening to plunge Neo-Gotham into an era of unprecedented darkness. Driven by a sense of duty he couldn't ignore, Tom delved deeper into the enigma, unraveling forgotten archives and chasing after digital shadows. The closer he got, the more he realized his grandfather's workshop wasn't just a haven, it was a vault – containing the last vestiges of the Batman's arsenal.",
   "question": "Will Tom heed the call, stepping into the shadows of his lineage to become the hero Neo-Gotham desperately needs?",
   "options": {
@@ -35,12 +36,13 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
   const [age, setAge] = useRecoilState(ageState);
   const [topic, setTopic] = useRecoilState(topicState)
   const [characters, setCharacters] = useRecoilState(characterState);
-  
+  const userId=localStorage.getItem('userId');
   const [title,setTitle]=useRecoilState(titleState);
   const [story,setStory]=useRecoilState(storyState);
   const [question,setQuestion]=useRecoilState(questionState);
   const [options,setOptions]=useRecoilState(optionsState);
-  
+  const [savedTitle,setSavedTitle]=useRecoilState(savedTitleState);
+  const [savedStory,setSavedStory]=useRecoilState(savedStoryState);
   const [bookOpen,setBookOpen]=useRecoilState(bookOpenStatus);
 
   function setBookFlip(){
@@ -48,22 +50,66 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
   }
 
   const sendDataToBackend = async () => {
-    const data = {
-      topic,
-      genre,
-      age,
-      setting,
-      characters,
-      length
-    };
+    // const data = {
+    //   topic,
+    //   genre,
+    //   age,
+    //   setting,
+    //   characters,
+    //   length
+    // };
 
     try {
-      const response = await fetch('http://localhost:8000/api/storyteller/start', {
+      // const response = await fetch('http://localhost:8000/api/storyteller/start', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+
+      // if (!response.ok) {
+      //   throw new Error('Network response was not ok');
+      // }
+
+      // const result = await response.json();
+
+      setTitle(data.title);
+      setStory(data.story);
+      setQuestion(data.question);
+      const options=[data.options.i,data.options.ii,data.options.iii];
+      setOptions(options);
+      saveContentToDatabase(data.title,data.story,genre);
+   
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+
+  useEffect(()=>{
+    if(savedStory && savedTitle){
+      setStory(savedStory);
+      setTitle(savedTitle);
+      setIsBookFlip(true);
+      setBookOpen(true);
+    }
+  },[savedStory,savedTitle])
+
+
+  const saveContentToDatabase=async (title:any,data:any,genre:any)=>{
+    try {
+      const response = await fetch(`http://localhost:8000/api/books/${userId}/addbooks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          title:title,
+          data:data,
+          genre:genre
+        }),
       });
 
       if (!response.ok) {
@@ -71,18 +117,15 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
       }
 
       const result = await response.json();
-
-      setTitle(result.title);
-      setStory(result.story);
-      setQuestion(result.question);
-      const options=[result.options.i,result.options.ii,result.options.iii];
-      setOptions(options);
-      setIsBookFlip(true);
-      setBookOpen(true);
+      console.log("asfdasdf",result);
+      if(response.ok){
+        setIsBookFlip(true);
+        setBookOpen(true);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }
 
   return (
     <div className="page-cover" ref={ref} data-density="hard">
@@ -121,15 +164,15 @@ const PageCover = React.forwardRef((props:any, ref:any) => {
   );
 });
 
+
+
+
 const PageCoverLast = React.forwardRef((props:any, ref:any) => {
-
-
-
 
   return (
     <div className="page-cover" ref={ref} data-density="hard">
       <div className="page-content">
-        <div className='coverdiv'>
+        <div className='coverBackdiv'>
           <img className='h-[725px] w-[780px]' src={converBack} alt="" />
         </div>
       </div>
@@ -149,7 +192,7 @@ const Page = React.forwardRef((props:any, ref:any) => {
        border: '1px solid #c2b5a3',
     overflow: 'hidden'}}></div>
       </div>
-      <PageComponent story={props.story} question={props.question} options={props.options}></PageComponent>
+      <PageComponent story={props.story} question={props.question} options={props.options} number={props.number}></PageComponent>
 
       <div className="pageNumber">Page number: {props.number}</div>
     </div>
@@ -238,7 +281,7 @@ function MyBook() {
       >
         <PageCover number="0">Your Stories</PageCover>
         {pages}
-        <PageCoverLast number="900000000">Your Stories</PageCoverLast>
+
 </HTMLFlipBook>
 
     
