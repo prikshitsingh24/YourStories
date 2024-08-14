@@ -184,6 +184,7 @@ const PageCoverLast = React.forwardRef((props:any, ref:any) => {
 
 
 const Page = React.forwardRef((props:any, ref:any) => {
+  console.log("props",props.story);
   return (
 
     <div ref={ref}> 
@@ -216,6 +217,8 @@ function MyBook() {
 
   
   useEffect(() => {
+    console.log("hello");
+    console.log(story);
     if (story) {
       const storyPages = [];
       let currentPageNumber = 1;
