@@ -18,7 +18,6 @@ function PageComponent(props: any) {
 
   useEffect(() => {
     if (!props.story) return; // If no story part, do nothing
-      console.log(props.story);
       const words = props.story.split(' ');
       const intervalId = setInterval(() => {
       setWordsIndex((prevIndex) => {
