@@ -1,7 +1,8 @@
 
 import { Trash2 as TrashIcon, CheckCircle as CheckIcon } from 'lucide-react'; // Add these imports for icons
-import Setting from '../../assets/stories/Setting.png';
+import AddIcon from '../../assets/stories/addIcon.png';
 import BookShelf from '../shelf/bookShelf';
+import { dividerClasses } from '@mui/material';
 
 const Sidebar: React.FC<{ 
   isOpen: boolean; 
@@ -24,10 +25,18 @@ const Sidebar: React.FC<{
   selectedBooks,
   onOpenBook
 }) => {
+  function addNewStory(event: any): void {
+    window.location.reload();
+  }
+
   return (
     <div className={`sidebar ${isOpen ? 'expanded' : ''}`}>
       <div className={`sidebar-icons${isOpen ? '-expanded' : ''}`}>
-        <div className="icon_setting"><img width='25' src={Setting} alt="Settings"/></div>
+        <div className={`icon_setting${isOpen ? '-expanded' : ''}`}><img width='25' src={AddIcon} alt="Settings"onClick={addNewStory}/>
+          {isOpen && <div onClick={addNewStory}>
+            Add New Story
+          </div> }
+        </div>
         <div className={`icon_delete${deleteMode ? '-red' : ''}`} onClick={onDeleteModeToggle}>
           <TrashIcon size={24} />
         </div>
