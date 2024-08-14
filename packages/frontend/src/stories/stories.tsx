@@ -254,29 +254,29 @@ const Stories: React.FC = () => {
   const [savedStory,setSavedStory]=useRecoilState(savedStoryState);
 
   const fetchBooks = async () => {
-    // const userId = localStorage.getItem('userId');
-    // if (!userId) {
-    //   console.error('User ID is missing');
-    //   return;
-    // }
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID is missing');
+      return;
+    }
 
-    // const url = `http://localhost:8000/api/books/${userId}/getbooks`;
-    // try {
-    //   const response = await fetch(url);
-    //   const data = await response.json();
-    //   if (response.ok && data.books) {
-    //     const formattedBooks = data.books.map((book: { title: string; _id: string }) => ({
-    //       title: book.title,
-    //       _id: book._id,
-    //     }));
-    //     setBooks(formattedBooks);
-    //     setFilteredBooks(formattedBooks);
-    //   } else {
-    //     console.error('Error fetching books:', data.message);
-    //   }
-    // } catch (error) {
-    //   console.error('Error fetching books:', error);
-    // }
+    const url = `http://localhost:8000/api/books/${userId}/getbooks`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (response.ok && data.books) {
+        const formattedBooks = data.books.map((book: { title: string; _id: string }) => ({
+          title: book.title,
+          _id: book._id,
+        }));
+        setBooks(formattedBooks);
+        setFilteredBooks(formattedBooks);
+      } else {
+        console.error('Error fetching books:', data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
   };
 
   useEffect(() => {

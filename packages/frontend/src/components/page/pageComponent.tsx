@@ -110,9 +110,8 @@ function PageComponent(props: any) {
   };
   useEffect(()=>{
     console.log("lenght",wholeStory.story.length)
-    if(wholeStory.story.length>2000*addPage){
-      console.log('hiiiiii');
-      const wordsPerPage = 1800; // Adjust this value as needed
+    if(wholeStory.story.length>1400*addPage){
+      const wordsPerPage = 1400; // Adjust this value as needed
       const totalWords = wholeStory.story.length;
       const pageCount = Math.ceil(totalWords / wordsPerPage);
 
@@ -143,10 +142,12 @@ function PageComponent(props: any) {
                 <div className="questionDiv">
                   {continueQuestion}
                 </div>
-              ) : (
+              ) : props.question? (
                 <div className="questionDiv">
                   {props.question}
                 </div>
+              ):(
+                <></>
               )}
               {continueOptions && continueOptions.length !== 0 ? (
                 <div className="optionContainer">
@@ -160,7 +161,7 @@ function PageComponent(props: any) {
                     {continueOptions[2]}
                   </div>
                 </div>
-              ) : (
+              ) : props.options.length>1? (
                 <div className="optionContainer">
                   <div className="optionDiv" onClick={() => handleOptionClick(wholeStory, props.question, props.options[0])}>
                     {props.options[0]}
@@ -172,6 +173,8 @@ function PageComponent(props: any) {
                     {props.options[2]}
                   </div>
                 </div>
+              ):(
+                <></>
               )}
             </div>
           </>
